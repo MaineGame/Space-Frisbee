@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: a32db663bb14b9044a7e5be47605dfab
+timeCreated: 1429210102
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - TXT_Score: {fileID: 11403562, guid: 8f6535de6fb31426d9784d294f8489d9, type: 2}
+  - gameOverUI: {instanceID: 0}
+  - backlight: {instanceID: 0}
+  - gravityBarFill: {instanceID: 0}
+  - gravityText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
