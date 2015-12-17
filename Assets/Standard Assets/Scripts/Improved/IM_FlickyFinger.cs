@@ -22,9 +22,7 @@ public class IM_FlickyFinger : MonoBehaviour {
 
 	void Start () 
 	{
-        //score.gameOverUI.SetActive (false);
         startPos = transform.localPosition;
-  
     }
 	
 	void Update () 
