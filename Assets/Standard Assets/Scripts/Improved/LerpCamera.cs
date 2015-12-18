@@ -4,6 +4,7 @@ using System.Collections;
 public class LerpCamera : MonoBehaviour {
     [SerializeField] Transform Target;
     [SerializeField] float RotationSpeed;
+    [SerializeField] float time;
 
     Animator anim;
     //values for internal use
@@ -12,12 +13,14 @@ public class LerpCamera : MonoBehaviour {
 
     void Awake()
     {
+        Time.timeScale = 1;
         anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         //find the vector pointing from our position to the target
         _direction = (Target.position - transform.position).normalized;
 
@@ -26,5 +29,11 @@ public class LerpCamera : MonoBehaviour {
 
         //rotate us over time according to speed until we are in the required rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
+    }
+
+    void LateUpdate()
+    {
+
+        Time.timeScale = time;
     }
 }
