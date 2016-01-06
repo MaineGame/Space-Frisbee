@@ -110,9 +110,31 @@ public class IM_FlickyFinger : MonoBehaviour {
 			//other.GetComponent<AudioSource>().Play();
 		}
 	}
-	
+
+	private void physicsbree() {
+		  
+		//make a new instance of this physics frisbee dealio
+		GameObject boop = Instantiate (physicsFrisbee);
+		//bring it here
+		boop.transform.position = new Vector3 (gameObject.transform.position.x,
+		                                       gameObject.transform.position.y,
+		                                       gameObject.transform.position.z);
+		boop.transform.rotation = Quaternion.Euler(new Vector3 (0, 0, 0));
+		boop.GetComponent<Rigidbody> ().velocity = gameObject.GetComponent<Rigidbody> ().velocity;
+		//add some force for amusement
+		boop.GetComponent<Rigidbody> ().AddTorque (new Vector3 (
+			Random.Range(50, 100),
+			Random.Range(50, 100),
+			Random.Range(50, 100)
+		));
+		boop.GetComponent<Rigidbody> ().AddForce  (Camera.main.transform.forward * Random.Range(200, 500));
+	}
+
+	public GameObject physicsFrisbee;
 	public void ResetFrisbee()
 	{
+		physicsbree ();
+
         anim.SetTrigger("ZoomOutCam");
         transform.parent = Camera.main.transform;
         transform.localPosition = startPos;
