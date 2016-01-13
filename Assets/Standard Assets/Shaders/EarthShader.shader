@@ -22,11 +22,11 @@
 				float4 position : SV_POSITION;
 				
 				//yep. that is self explooni torrie.
-				float4 positionInWorld;
+				float4 positionInWorld : POSINWORLD;
 				//pull through NORMAL
-				float3 normal;
+				float3 normal : NORMAL;
 				//pull through TEXCOORD0
-				float4 tex;
+				float4 tex : TEXCOORD0;
 			};
 			
 			VertexOutput vert(VertexInput i) {
