@@ -27,7 +27,7 @@ public class IM_FlickyFinger : MonoBehaviour {
   
     }
 	
-	void Update () 
+	void Update ()
 	{
 		Controls();
 	}
@@ -125,9 +125,9 @@ public class IM_FlickyFinger : MonoBehaviour {
 		boop.GetComponent<Rigidbody> ().velocity = gameObject.GetComponent<Rigidbody> ().velocity;
 		//add some force for amusement
 		boop.GetComponent<Rigidbody> ().AddTorque (new Vector3 (
-			Random.Range(50, 100),
-			Random.Range(50, 100),
-			Random.Range(50, 100)
+			Random.Range(-100, 100),
+			Random.Range(-100, 100),
+			Random.Range(-100, 100)
 		));
 		boop.GetComponent<Rigidbody> ().AddForce  (Camera.main.transform.forward * Random.Range(200, 500));
 	}
