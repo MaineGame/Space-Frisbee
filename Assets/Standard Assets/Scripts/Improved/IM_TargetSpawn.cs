@@ -32,15 +32,15 @@ public class IM_TargetSpawn : MonoBehaviour
     {
         if (other.gameObject.tag == "Frisbee")
         {
-			audio.Play();
+			//audio.Play();
 			gameObject.GetComponentsInChildren<MeshRenderer> ()[0].enabled = false;
 			gameObject.GetComponentsInChildren<SpriteRenderer> ()[0].enabled = false;
 
 			GameObject boop = Instantiate(physicsTargetStand);
 			boop.transform.position = gameObject.transform.parent.gameObject.transform.position;
-			boop.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+//			boop.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 			boop.transform.GetChild(0).gameObject.transform.rotation = gameObject.transform.rotation;
-			boop.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, 1000));
+//			boop.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 100, 0));
 
 			anim.Play("Target_DOWN");
 
