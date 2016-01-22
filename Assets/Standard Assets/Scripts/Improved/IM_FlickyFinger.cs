@@ -111,6 +111,9 @@ public class IM_FlickyFinger : MonoBehaviour {
 		}
 	}
 
+	[SerializeField]
+	Material whiteOutlineMaterial;
+
 	private void physicsbree() {
 		  
 		//make a new instance of this physics frisbee dealio
@@ -128,6 +131,12 @@ public class IM_FlickyFinger : MonoBehaviour {
 			Random.Range(50, 100)
 		));
 		boop.GetComponent<Rigidbody> ().AddForce  (Camera.main.transform.forward * Random.Range(200, 500));
+
+		boop.transform.GetChild (0).GetChild (0).gameObject.GetComponent<Renderer> ().material = whiteOutlineMaterial;
+		boop.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material = whiteOutlineMaterial;
+
+		//boop.GetComponentInChildren<Renderer>().material.SetColor("Outline Color", Color.white);
+		//boop.GetComponentInChildren<Renderer>()[1].material.SetColor("Outline Color", Color.white);
 	}
 
 	public GameObject physicsFrisbee;
