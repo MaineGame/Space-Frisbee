@@ -6,7 +6,6 @@ public class LerpCamera : MonoBehaviour {
     [SerializeField] float RotationSpeed;
     [SerializeField] float time;
 
-    Animator anim;
     //values for internal use
     private Quaternion _lookRotation;
     private Vector3 _direction;
@@ -15,8 +14,6 @@ public class LerpCamera : MonoBehaviour {
     void Awake()
     {
         Time.timeScale = 1;
-        anim = GetComponent<Animator>();
-        
     }
 
     public IEnumerator LookAtTarget(float lookTime)

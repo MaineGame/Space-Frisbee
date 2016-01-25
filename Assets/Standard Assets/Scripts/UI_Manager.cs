@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UI_Manager : MonoBehaviour {
 
@@ -57,24 +58,44 @@ public class UI_Manager : MonoBehaviour {
 	
 	public void SetGravity()
 	{
-		levelName = Application.loadedLevelName;
+        levelName = Application.loadedLevelName;
 		
 		switch(levelName)
 		{
-			case "Moon": 
+            case "Mercury":
+                gravity3.y = -3.7f;
+                currentGravity = 0.06542960871f;
+                gravityBarFill.color = Color.green;
+                break;
+
+            case "Venus":
+                gravity3.y = -8.87f;
+                currentGravity = 0.06542960871f;
+                gravityBarFill.color = Color.green;
+                break;
+
+            case "Mars":
+                gravity3.y = -3.711f;
+                currentGravity = 0.06542960871f;
+                gravityBarFill.color = Color.green;
+                break;
+
+            case "Moon": 
 				gravity3.y = -1.622f;
 				currentGravity = 0.06542960871f;
 				gravityBarFill.color = Color.green;
 				break;
 				
-			case "EarthSnow": case "EarthDesert": 
+			case "EarthArtic": case "EarthDesert": 
 				gravity3.y = -9.81f;
 				currentGravity = 0.39560306575f;
 				gravityBarFill.color = Color.green;
 				break;
-		}
-		
-		Physics.gravity = gravity3;
+        
+        }
+
+
+        Physics.gravity = gravity3;
 		gravityBarFill.fillAmount = currentGravity;
 		gravityText.text = "Gravity " + Mathf.Abs (Physics.gravity.y) + " m/s²"; 
 	}

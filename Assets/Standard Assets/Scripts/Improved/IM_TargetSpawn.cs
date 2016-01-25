@@ -11,8 +11,7 @@ public class IM_TargetSpawn : MonoBehaviour
 	GameObject physicsTargetStand;
     [SerializeField]
     Transform target;
-    [SerializeField]
-    float RotationSpeed = 4;
+
 
     //values for internal use
     private Quaternion _lookRotation;
@@ -51,8 +50,8 @@ public class IM_TargetSpawn : MonoBehaviour
 
     void ResetSpawn()
     {
-        StartCoroutine(lc.LookAtTarget(.6f));
-        transform.parent.position = new Vector3(Random.Range(0,10), 0, Random.Range(-10, 10));
+        StartCoroutine(lc.LookAtTarget(1.0f));
+        transform.parent.position = new Vector3(Random.Range(-3,10), 0, Random.Range(-10, 10));
         transform.LookAt(new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10f, Camera.main.transform.position.z));
         //transform.rotation = Quaternion.Euler(0, transform.rotation.y, transform.rotation.z);
         //transform.rotation = Quaternion.
