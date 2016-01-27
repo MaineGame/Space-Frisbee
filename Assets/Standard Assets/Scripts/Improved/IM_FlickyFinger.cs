@@ -99,7 +99,13 @@ public class IM_FlickyFinger : MonoBehaviour {
 			score.AddScore();
 			Metrics.hits++;
 		}
-	}
+        if (other.gameObject.tag == "Floor")
+        {
+            ResetFrisbee();
+            score.ShowGameOverUI();
+            //other.GetComponent<AudioSource>().Play();
+        }
+    }
 	
 	void OnTriggerExit(Collider other)
 	{
