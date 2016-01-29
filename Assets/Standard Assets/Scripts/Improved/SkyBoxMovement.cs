@@ -3,14 +3,14 @@ using System.Collections;
 
 public class SkyBoxMovement : MonoBehaviour {
 
-    [SerializeField] float rotationSpeed;
+    [SerializeField] float rotation, rotationSpeed;
 	
     void Update()
     {
-        rotationSpeed += 0.25f * Time.deltaTime;
+        rotation += rotationSpeed * Time.deltaTime;
     }
 	void LateUpdate () {
         
-        GetComponent<Skybox>().material.SetFloat("_Rotation", rotationSpeed);
+        GetComponent<Skybox>().material.SetFloat("_Rotation", rotation);
 	}
 }

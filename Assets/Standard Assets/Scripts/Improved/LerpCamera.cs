@@ -26,16 +26,10 @@ public class LerpCamera : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-       
-    }
 
     void LerpCamera2Target()
     {
-        Debug.Log("ok we going");
+
         //find the vector pointing from our position to the target
         _direction = (Target.position - transform.position).normalized;
 
