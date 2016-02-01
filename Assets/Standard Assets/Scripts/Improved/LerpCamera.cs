@@ -21,7 +21,9 @@ public class LerpCamera : MonoBehaviour {
         while(lookTime >= 0f)
         {
             LerpCamera2Target();
+
             lookTime -= Time.fixedDeltaTime;
+
             yield return new WaitForSeconds(1f / 60f);
         }
     }
