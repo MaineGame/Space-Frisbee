@@ -11,9 +11,11 @@ public class UI_Manager : MonoBehaviour {
     public Image fingerMove;
     public static bool fingerTouch;
     public int score;
+    static int level = 0;
   
     void Start()
     {
+        level++;
         Time.timeScale = 1;
         score = 0;
         SetGravity();

@@ -4,20 +4,22 @@ using System.Collections;
 public class IM_FlickyFinger : MonoBehaviour {
 
 	Vector3 worldMousePosition,firstMousePosition, secondMousePosition, startPos;
-	float speed; 
-	float curve;
+	float speed;
+    float curve;
+    int noDecimals;
 
     public UI_Manager stopFinger, score;
 	Rigidbody rb;
     AudioSource sound;
     Animator anim;
+    Transform tf;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         sound = GetComponent<AudioSource>();
         anim = transform.GetComponentInParent<Animator>();
-
+        tf = GetComponent<Transform>();
     }
 
 	void Start () 
@@ -27,6 +29,7 @@ public class IM_FlickyFinger : MonoBehaviour {
 	
 	void Update () 
 	{
+        //tf.position += new Vector3(0, 0.5f, 0);
 		Controls();
 	}
 	
@@ -42,6 +45,7 @@ public class IM_FlickyFinger : MonoBehaviour {
                
 				UI_Manager.fingerTouch = true;
 				stopFinger.fingerMove.enabled = false;
+  
 				StopCoroutine(stopFinger.FingerDisplay());
 				
 				firstMousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -54,7 +58,7 @@ public class IM_FlickyFinger : MonoBehaviour {
 				if(transform.parent == Camera.main.transform)
 				{
                     anim.SetTrigger("ZoomInCam");
-                    transform.parent = null;
+                    //transform.parent = null;
 
                     // Gets the mouse position when the mouse button is released
                     secondMousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
