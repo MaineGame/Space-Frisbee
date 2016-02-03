@@ -82,7 +82,7 @@ public class IM_FlickyFinger : MonoBehaviour {
 
 	void moveSpeed()
 	{
-		speed = secondMousePosition.y - firstMousePosition.y;
+		speed = (secondMousePosition.y - firstMousePosition.y) / Screen.height * 1750;
 
 		if(speed >= 10000f)
 		{
@@ -92,7 +92,7 @@ public class IM_FlickyFinger : MonoBehaviour {
 	
 	void curveSpeed()
 	{
-		curve = secondMousePosition.x - firstMousePosition.x; 
+		curve = (secondMousePosition.x - firstMousePosition.x) / Screen.width * 1000; 
 	}
 	
 	void OnCollisionEnter(Collision other)
