@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuControls : MonoBehaviour {
 	
@@ -39,7 +40,7 @@ public class MainMenuControls : MonoBehaviour {
 	
 	public void LoadLevel(string name)
 	{
-		Application.LoadLevel(name);
+		SceneManager.LoadScene(name);
 	}
 	
 	public void EnablePlanetButtons()
@@ -56,7 +57,7 @@ public class MainMenuControls : MonoBehaviour {
 	
 	public void RandomButton()
 	{
-		Application.LoadLevel(Random.Range(1,4));
+		SceneManager.LoadScene(Random.Range(1,4));
         
 	}
 	

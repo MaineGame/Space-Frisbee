@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class IM_TargetSpawn : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class IM_TargetSpawn : MonoBehaviour
 	GameObject physicsTargetStand;
     [SerializeField]
     Transform target;
-
+    [SerializeField]
+    Text hitScoreText;
 
     //values for internal use
     private Quaternion _lookRotation;
@@ -23,6 +25,7 @@ public class IM_TargetSpawn : MonoBehaviour
     {
         audio = GetComponent<AudioSource>();
         anim = GetComponent<Animation>();
+        
         ResetSpawn();
     }
 
@@ -31,7 +34,9 @@ public class IM_TargetSpawn : MonoBehaviour
     {
         if (other.gameObject.tag == "Frisbee")
         {
-			//audio.Play();
+            //audio.Play();
+            hitScoreText.transform.position = transform.position + new Vector3(0, 6, 0);
+            StartCoroutine(Faded(1.0f, 1.0f));
 			gameObject.GetComponentsInChildren<MeshRenderer> ()[0].enabled = false;
 			gameObject.GetComponentsInChildren<SpriteRenderer> ()[0].enabled = false;
 
@@ -44,12 +49,15 @@ public class IM_TargetSpawn : MonoBehaviour
 			anim.Play("Target_DOWN");
 
             StartCoroutine(WaitAndSpawn(1F));
+          
            
         }
     }
 
     void ResetSpawn()
     {
+        StartCoroutine(Faded(0.0f, 1.0f));
+
         StartCoroutine(lc.LookAtTarget(1.0f));
         transform.parent.position = new Vector3(Random.Range(-3,10), 0, Random.Range(-10, 10));
         transform.LookAt(new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y - 10f, Camera.main.transform.position.z));
@@ -58,13 +66,23 @@ public class IM_TargetSpawn : MonoBehaviour
 		anim.Play("Target_UP");
 		gameObject.GetComponentsInChildren<MeshRenderer> ()[0].enabled = true;
 		gameObject.GetComponentsInChildren<SpriteRenderer> ()[0].enabled = true;
-        
+
     }
 
     IEnumerator WaitAndSpawn(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         ResetSpawn();
+    }
 
+    IEnumerator Faded(float alphaValue, float time)
+    {
+        float alpha = hitScoreText.color.a;
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / time)
+        {
+            Color myColor = new Color(72/255f, 1f, 0f, Mathf.Lerp(alpha, alphaValue, t));
+            hitScoreText.GetComponent<Text>().color = myColor;
+            yield return null;
+        }
     }
 }

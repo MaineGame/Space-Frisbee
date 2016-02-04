@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -27,7 +28,7 @@ public class LevelManager : MonoBehaviour {
 	IEnumerator LoadLevel(){
 		FadeOut.SetActive(true);
 		yield return new WaitForSeconds(1);
-		Application.LoadLevel(sceneNameLoad);
+		SceneManager.LoadScene(sceneNameLoad);
 	}
 	
 	public void QuitGame(){

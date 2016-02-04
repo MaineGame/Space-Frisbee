@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class LerpCamera : MonoBehaviour {
-    [SerializeField] Transform Target;
-    [SerializeField] float RotationSpeed;
+    [SerializeField] Transform target;
+    [SerializeField] float rotationSpeed = 1;
     [SerializeField] float time;
 
     //values for internal use
@@ -33,15 +33,16 @@ public class LerpCamera : MonoBehaviour {
     {
 
         //find the vector pointing from our position to the target
-        _direction = (Target.position - transform.position).normalized;
+        _direction = (target.position - transform.position).normalized;
 
         //create the rotation we need to be in to look at the target
         _lookRotation = Quaternion.LookRotation(_direction);
 
         //rotate us over time according to speed until we are in the required rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, 0.05f * RotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, 0.05f * rotationSpeed);
 
     }
+
     void LateUpdate()
     {
         Time.timeScale = time;

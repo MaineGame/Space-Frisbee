@@ -6,7 +6,6 @@ public class IM_FlickyFinger : MonoBehaviour {
 	Vector3 worldMousePosition,firstMousePosition, secondMousePosition, startPos;
 	float speed;
     float curve;
-    int noDecimals;
 
     public UI_Manager stopFinger, score;
 	Rigidbody rb;
