@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class GameOverControls : MonoBehaviour {
 
 	public Text mute;
 
 	public void LoadLevel(string name){
-        Application.LoadLevel(name);
+        SceneManager.LoadScene(name);
+  
 	}
 
 	// Use this for initialization
 	public void PlayAgainButton () {
 		Metrics.plays++;
-		Application.LoadLevel(Application.loadedLevelName);
-	}
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 	
 	// Update is called once per frame
 	public void MainMenuButton () {
 		Metrics.OutputMetrics();
-		Application.LoadLevel ("Menu");
-	}
+        SceneManager.LoadScene("Menu");
+    }
 	
 	public void MuteButton()
 	{

@@ -58,7 +58,7 @@ public class UI_Manager : MonoBehaviour {
 	
 	public void SetGravity()
 	{
-        levelName = Application.loadedLevelName;
+        levelName = SceneManager.GetActiveScene().name;
 		
 		switch(levelName)
 		{

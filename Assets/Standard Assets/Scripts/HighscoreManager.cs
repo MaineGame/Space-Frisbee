@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class HighscoreManager : MonoBehaviour {
 
@@ -17,7 +18,7 @@ public class HighscoreManager : MonoBehaviour {
 		{
 			System.IO.Directory.CreateDirectory("Scores");
 		}
-		levelName = Application.loadedLevelName;
+		levelName = SceneManager.GetActiveScene().name;
 		score = GetComponent<UI_Manager>();
 		loadScores ();
 		
