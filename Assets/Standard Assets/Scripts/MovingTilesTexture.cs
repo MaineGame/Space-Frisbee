@@ -2,13 +2,14 @@
 
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class MovingTilesTexture : MonoBehaviour 
 {
 	public int materialIndex = 0;
 	public Vector2 uvAnimationRate = new Vector2( 0.05f, 0.0f );
 	public string textureName = "_MainTex";
-	public string textureName2 = "_SpecMap";
+	//public string textureName2 = "_SpecMap";
 	Vector2 uvOffset = Vector2.zero;
 	
 	void LateUpdate() 
@@ -17,7 +18,7 @@ public class MovingTilesTexture : MonoBehaviour
 		if( GetComponent<Renderer>().enabled )
 		{
 			GetComponent<Renderer>().materials[ materialIndex ].SetTextureOffset( textureName, uvOffset );
-			GetComponent<Renderer>().materials[ materialIndex ].SetTextureOffset( textureName2, uvOffset );
+			//GetComponent<Renderer>().materials[ materialIndex ].SetTextureOffset( textureName2, uvOffset );
 		}
 	}
 }

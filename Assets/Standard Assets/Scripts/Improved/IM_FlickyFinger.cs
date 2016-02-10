@@ -7,7 +7,7 @@ public class IM_FlickyFinger : MonoBehaviour {
 	float speed;
     float curve;
     int noDecimals;
-
+    
     public UI_Manager stopFinger, score;
 	Rigidbody rb;
     AudioSource sound;
@@ -82,7 +82,7 @@ public class IM_FlickyFinger : MonoBehaviour {
 
 	void moveSpeed()
 	{
-		speed = (secondMousePosition.y - firstMousePosition.y) / Screen.height * 1750;
+		speed = (secondMousePosition.y - firstMousePosition.y) * Screen.height / 1920;
 
 		if(speed >= 10000f)
 		{
@@ -92,7 +92,7 @@ public class IM_FlickyFinger : MonoBehaviour {
 	
 	void curveSpeed()
 	{
-		curve = (secondMousePosition.x - firstMousePosition.x) / Screen.width * 1000; 
+		curve = (secondMousePosition.x - firstMousePosition.x) * Screen.width / 2000; 
 	}
 	
 	void OnCollisionEnter(Collision other)
@@ -121,9 +121,6 @@ public class IM_FlickyFinger : MonoBehaviour {
 		}
 	}
 
-	[SerializeField]
-	Material whiteOutlineMaterial;
-
 	private void physicsbree() {
 		  
 		//make a new instance of this physics frisbee dealio
@@ -141,9 +138,6 @@ public class IM_FlickyFinger : MonoBehaviour {
 			Random.Range(50, 100)
 		));
 		boop.GetComponent<Rigidbody> ().AddForce  (Camera.main.transform.forward * Random.Range(200, 500));
-
-		boop.transform.GetChild (0).GetChild (0).gameObject.GetComponent<Renderer> ().material = whiteOutlineMaterial;
-		boop.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material = whiteOutlineMaterial;
 
 		//boop.GetComponentInChildren<Renderer>().material.SetColor("Outline Color", Color.white);
 		//boop.GetComponentInChildren<Renderer>()[1].material.SetColor("Outline Color", Color.white);
